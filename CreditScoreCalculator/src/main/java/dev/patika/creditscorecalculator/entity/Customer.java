@@ -18,10 +18,8 @@ import java.util.List;
 public class Customer extends AbstractBaseEntity{
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private long ssid; // Customer SSID considered as an unique ID.
 
-    private long ssid;
     private String customerName;
     private Float customerSalary;
     private String customerPhoneNumber;

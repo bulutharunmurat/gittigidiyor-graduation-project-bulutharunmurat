@@ -19,7 +19,7 @@ public class CustomerDTO {
     @ApiModelProperty(example = "12345678902")
     @NotNull(message = "SSID is mandatory")
     @NumberFormat(style = NumberFormat.Style.NUMBER)
-    private Long ssid;
+    private long ssid;
 
     @ApiModelProperty(example = "Harun Murat Bulut")
     @NotBlank(message = "Name is mandatory!!!")
