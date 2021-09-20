@@ -26,6 +26,6 @@ public class Customer extends AbstractBaseEntity{
 
     @JsonManagedReference
     @OneToMany(mappedBy = "customer", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private List<CreditResponse> creditResponseList = new ArrayList<>();
+    private List<CreditRequestResponse> creditRequestResponse = new ArrayList<>();
 
 }

@@ -17,14 +17,13 @@ import java.util.List;
 
 @Service
 @RequiredArgsConstructor
-public class CustomerService implements BaseService<Customer> {
+public class CustomerService{
 
     private final CustomerRepository customerRepository;
     private final CustomerMapper customerMapper;
     private static Logger logger = Logger.getLogger(CustomerService.class);
 
 
-    @Override
     @Transactional(readOnly = true)
     public List<Customer> findAll() {
         List<Customer> customerList = new ArrayList<>();
@@ -33,18 +32,13 @@ public class CustomerService implements BaseService<Customer> {
         return customerList;
     }
 
-    @Override
-    public Customer findById(int customerId) {
-        Customer customer = customerRepository.findById((long) customerId)
-                .orElseThrow(() -> new CustomerNotFoundException(String.format("Customer with ID: %d could not found!", customerId)));
+    public Customer findBySsid(long customerSSID) {
+        Customer customer = customerRepository.findBySsid(customerSSID)
+                .orElseThrow(() -> new CustomerNotFoundException(String.format("Customer with SSID: %d could not found!", customerSSID)));
         return customer;
     }
 
-    @Override
-    public void deleteById(int id) {
-    }
-
-
+    // Customer SSID considered as an unique and cannot be change in future
     @Transactional
     public Customer update(CustomerDTO customerDTO) {
         Customer customer = customerMapper.mapFromCustomerDTOtoCustomer(customerDTO);
@@ -63,6 +57,4 @@ public class CustomerService implements BaseService<Customer> {
         Customer customer = customerMapper.mapFromCustomerDTOtoCustomer(customerDTO);
         return customerRepository.save(customer);
     }
-
-
 }
