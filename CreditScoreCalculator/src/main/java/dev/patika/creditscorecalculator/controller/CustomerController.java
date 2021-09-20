@@ -21,11 +21,15 @@ public class CustomerController {
     public ResponseEntity<List<Customer>> findAll(){
         return new ResponseEntity<>(customerService.findAll(), HttpStatus.OK);
     }
-    @GetMapping("/customers/{id}")
-    public ResponseEntity<Customer> findCustomerById(@PathVariable long id){
-        return new ResponseEntity<>(customerService.findBySsid(id), HttpStatus.OK);
+    @GetMapping("/customers/{ssid}")
+    public ResponseEntity<Customer> findCustomerById(@PathVariable long ssid){
+        return new ResponseEntity<>(customerService.findBySsid(ssid), HttpStatus.OK);
     }
-
+    @DeleteMapping("/customers/{ssid}")
+    public String deleteCustomerById(@PathVariable long ssid){
+        customerService.deleteBySsid(ssid);
+        return "Customer with " + ssid + " id deleted";
+    }
     @PostMapping("/customers")
     public Customer saveCustomer(@RequestBody CustomerDTO customerDTO){
         return customerService.save(customerDTO);

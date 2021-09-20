@@ -2,12 +2,15 @@ package dev.patika.creditscorecalculator.service;
 
 import dev.patika.creditscorecalculator.entity.CreditRequestResponse;
 import dev.patika.creditscorecalculator.entity.Customer;
+import dev.patika.creditscorecalculator.exceptions.CustomerNotFoundException;
 import dev.patika.creditscorecalculator.exceptions.IllegalSSIDNumberException;
 import dev.patika.creditscorecalculator.repository.CreditRequestRepository;
 import lombok.RequiredArgsConstructor;
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
 
 @Service
 @RequiredArgsConstructor
@@ -17,6 +20,9 @@ public class CreditRequestService{
     private final CreditRequestRepository creditRequestRepository;
     private static Logger logger = Logger.getLogger(CustomerService.class);
 
+    public List<CreditRequestResponse> findCustomerCreditResponsesWithSsid(long customerSSID) {
+        return creditRequestRepository.findCustomerCreditResponsesWithSsid(customerSSID);
+    }
 
     @Transactional
     public CreditRequestResponse creditRequest(long customerSSID) {
