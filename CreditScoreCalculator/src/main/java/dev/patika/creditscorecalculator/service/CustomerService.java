@@ -51,7 +51,7 @@ public class CustomerService{
         boolean isExists = customerRepository.selectExistsSsid(customerDTO.getSsid());
 
         if(isExists){
-            logger.info("Customer with SSID : " + customerDTO.getSsid() + " is already exists!");
+//            logger.info("Customer with SSID : " + customerDTO.getSsid() + " is already exists!");
             throw new CustomerAlreadyExists("Customer with SSID : " + customerDTO.getSsid() + " is already exists!");
         }
         Customer customer = customerMapper.mapFromCustomerDTOtoCustomer(customerDTO);

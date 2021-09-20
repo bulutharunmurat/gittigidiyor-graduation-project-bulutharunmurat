@@ -22,13 +22,13 @@ public class CustomerController {
         return new ResponseEntity<>(customerService.findAll(), HttpStatus.OK);
     }
     @GetMapping("/customers/{ssid}")
-    public ResponseEntity<Customer> findCustomerById(@PathVariable long ssid){
+    public ResponseEntity<Customer> findCustomerBySsid(@PathVariable long ssid){
         return new ResponseEntity<>(customerService.findBySsid(ssid), HttpStatus.OK);
     }
     @DeleteMapping("/customers/{ssid}")
-    public String deleteCustomerById(@PathVariable long ssid){
+    public String deleteCustomerBySsid(@PathVariable long ssid){
         customerService.deleteBySsid(ssid);
-        return "Customer with " + ssid + " id deleted";
+        return "Customer with " + ssid + " SSID deleted";
     }
     @PostMapping("/customers")
     public Customer saveCustomer(@RequestBody CustomerDTO customerDTO){
