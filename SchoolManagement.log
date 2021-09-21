@@ -33,3 +33,64 @@
 2021-09-21 00:43:03.430  INFO 10508 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
 2021-09-21 00:43:03.432  INFO 10508 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
 2021-09-21 00:43:03.439  INFO 10508 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2021-09-21 20:02:28.290  INFO 23160 --- [main] d.p.c.CreditScoreCalculatorApplication   : Starting CreditScoreCalculatorApplication using Java 15.0.1 on DESKTOP-QRMQ236 with PID 23160 (C:\Users\Harun Murad BULUT\Desktop\gittigidiyor-graduation-project-bulutharunmurat\CreditScoreCalculator\target\classes started by Harun Murad BULUT in C:\Users\Harun Murad BULUT\Desktop\gittigidiyor-graduation-project-bulutharunmurat)
+2021-09-21 20:02:28.293  INFO 23160 --- [main] d.p.c.CreditScoreCalculatorApplication   : No active profile set, falling back to default profiles: default
+2021-09-21 20:02:29.926  INFO 23160 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2021-09-21 20:02:29.996  INFO 23160 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 59 ms. Found 3 JPA repository interfaces.
+2021-09-21 20:02:30.615  INFO 23160 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2021-09-21 20:02:30.625  INFO 23160 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2021-09-21 20:02:30.625  INFO 23160 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.52]
+2021-09-21 20:02:30.772  INFO 23160 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2021-09-21 20:02:30.773  INFO 23160 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2427 ms
+2021-09-21 20:02:31.046  INFO 23160 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2021-09-21 20:02:31.105  INFO 23160 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.4.32.Final
+2021-09-21 20:02:31.212  INFO 23160 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2021-09-21 20:02:31.330  INFO 23160 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2021-09-21 20:02:31.574  INFO 23160 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2021-09-21 20:02:31.596  INFO 23160 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2021-09-21 20:02:32.944  INFO 23160 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2021-09-21 20:02:32.952  INFO 23160 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2021-09-21 20:02:33.601  WARN 23160 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2021-09-21 20:02:33.807  INFO 23160 --- [main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint(s) beneath base path '/actuator'
+2021-09-21 20:02:33.877  INFO 23160 --- [main] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2021-09-21 20:02:34.229  INFO 23160 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2021-09-21 20:02:34.231  INFO 23160 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2021-09-21 20:02:34.250  INFO 23160 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2021-09-21 20:02:34.282  INFO 23160 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2021-09-21 20:02:34.504  INFO 23160 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: handleUsingGET_1
+2021-09-21 20:02:34.543  INFO 23160 --- [main] d.p.c.CreditScoreCalculatorApplication   : Started CreditScoreCalculatorApplication in 6.96 seconds (JVM running for 8.192)
+2021-09-21 20:02:34.964  INFO 23160 --- [RMI TCP Connection(2)-192.168.1.35] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2021-09-21 20:02:34.965  INFO 23160 --- [RMI TCP Connection(2)-192.168.1.35] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2021-09-21 20:02:34.968  INFO 23160 --- [RMI TCP Connection(2)-192.168.1.35] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
+2021-09-21 20:05:23.223  INFO 23160 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2021-09-21 20:05:23.226  INFO 23160 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2021-09-21 20:05:23.236  INFO 23160 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2021-09-21 20:05:46.224  INFO 15836 --- [main] d.p.c.CreditScoreCalculatorApplication   : Starting CreditScoreCalculatorApplication using Java 15.0.1 on DESKTOP-QRMQ236 with PID 15836 (C:\Users\Harun Murad BULUT\Desktop\gittigidiyor-graduation-project-bulutharunmurat\CreditScoreCalculator\target\classes started by Harun Murad BULUT in C:\Users\Harun Murad BULUT\Desktop\gittigidiyor-graduation-project-bulutharunmurat)
+2021-09-21 20:05:46.229  INFO 15836 --- [main] d.p.c.CreditScoreCalculatorApplication   : No active profile set, falling back to default profiles: default
+2021-09-21 20:05:47.631  INFO 15836 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2021-09-21 20:05:47.710  INFO 15836 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 69 ms. Found 2 JPA repository interfaces.
+2021-09-21 20:05:48.231  INFO 15836 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2021-09-21 20:05:48.239  INFO 15836 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2021-09-21 20:05:48.240  INFO 15836 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.52]
+2021-09-21 20:05:48.358  INFO 15836 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2021-09-21 20:05:48.358  INFO 15836 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2050 ms
+2021-09-21 20:05:48.596  INFO 15836 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2021-09-21 20:05:48.639  INFO 15836 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.4.32.Final
+2021-09-21 20:05:48.747  INFO 15836 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2021-09-21 20:05:48.850  INFO 15836 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2021-09-21 20:05:49.001  INFO 15836 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2021-09-21 20:05:49.013  INFO 15836 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2021-09-21 20:05:49.706  INFO 15836 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2021-09-21 20:05:49.714  INFO 15836 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2021-09-21 20:05:50.325  WARN 15836 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2021-09-21 20:05:50.501  INFO 15836 --- [main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint(s) beneath base path '/actuator'
+2021-09-21 20:05:50.582  INFO 15836 --- [main] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2021-09-21 20:05:50.975  INFO 15836 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2021-09-21 20:05:50.976  INFO 15836 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2021-09-21 20:05:50.991  INFO 15836 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2021-09-21 20:05:51.021  INFO 15836 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2021-09-21 20:05:51.275  INFO 15836 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: handleUsingGET_1
+2021-09-21 20:05:51.314  INFO 15836 --- [main] d.p.c.CreditScoreCalculatorApplication   : Started CreditScoreCalculatorApplication in 5.631 seconds (JVM running for 7.653)
+2021-09-21 20:05:55.747  INFO 15836 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2021-09-21 20:05:55.748  INFO 15836 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2021-09-21 20:05:55.757  INFO 15836 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 8 ms

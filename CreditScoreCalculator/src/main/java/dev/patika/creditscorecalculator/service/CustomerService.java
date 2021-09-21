@@ -23,7 +23,6 @@ public class CustomerService{
     private final CustomerMapper customerMapper;
     private static Logger logger = Logger.getLogger(CustomerService.class);
 
-
     @Transactional(readOnly = true)
     public List<Customer> findAll() {
         List<Customer> customerList = new ArrayList<>();
@@ -51,7 +50,9 @@ public class CustomerService{
         boolean isExists = customerRepository.selectExistsSsid(customerDTO.getSsid());
 
         if(isExists){
-//            logger.info("Customer with SSID : " + customerDTO.getSsid() + " is already exists!");
+            logger.debug("Customer with SSID : " + customerDTO.getSsid() + " is already exists!");
+//            Log log = new Log(Instant.now(),"Customer with SSID : " + customerDTO.getSsid() + " is already exists!", "course error");
+//            logService.save(log);
             throw new CustomerAlreadyExists("Customer with SSID : " + customerDTO.getSsid() + " is already exists!");
         }
         Customer customer = customerMapper.mapFromCustomerDTOtoCustomer(customerDTO);
