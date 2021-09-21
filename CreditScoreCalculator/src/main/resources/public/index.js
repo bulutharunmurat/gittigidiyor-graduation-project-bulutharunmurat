@@ -2,10 +2,10 @@ const table = document.getElementById("customerTable");
 
 function getCustomerList() {
   fetch("http://localhost:8080/api/customers")
-    .then((response) => response.json())
-    .then((data) => {
-      for (customer of data) {
-        table.innerHTML += `
+      .then((response) => response.json())
+      .then((data) => {
+        for (customer of data) {
+          table.innerHTML += `
           <tr>
           <td><input type="text" class="form-control" id="customer_ssid_${customer.ssid}" value="${customer.ssid}" readonly></td>
           <td><input type="text" class="form-control" id="customer_name_${customer.ssid}" value="${customer.customerName}"></td>
@@ -15,8 +15,8 @@ function getCustomerList() {
           <td><button type="button" class="btn btn-primary" onclick='deleteCustomer(${customer.ssid})'>Delete Customer</td>
           <td><button type="button" class="btn btn-success" onclick='creditRequest(${customer.ssid})'>Make Credit Request</td>
       </tr>`;
-      }
-    });
+        }
+      });
 }
 
 function refreshData() {
@@ -27,11 +27,11 @@ function createCustomer() {
   let customer = {
     ssid: document.getElementById("customer_ssid").value || "EMPTY VALUE!!!",
     customerName:
-      document.getElementById("customer_name").value || "EMPTY VALUE!!!",
+        document.getElementById("customer_name").value || "EMPTY VALUE!!!",
     customerSalary:
-      document.getElementById("customer_salary").value || "EMPTY VALUE!!!",
+        document.getElementById("customer_salary").value || "EMPTY VALUE!!!",
     customerPhoneNumber:
-      document.getElementById("customer_phonenumber").value || "EMPTY VALUE!!!",
+        document.getElementById("customer_phonenumber").value || "EMPTY VALUE!!!",
   };
 
   fetch("http://localhost:8080/api/customers", {
@@ -41,10 +41,10 @@ function createCustomer() {
       "Content-Type": "application/json",
     },
   })
-    .then((response) => response.json())
-    .then((data) => {
-      console.log(data);
-      table.innerHTML += `<tr>
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data);
+        table.innerHTML += `<tr>
       <td><input type="text" class="form-control" id="customer_ssid_${data.ssid}" value="${data.ssid}" readonly></td>
       <td><input type="text" class="form-control" id="customer_name_${data.ssid}" value="${data.customerName}"></td>
       <td><input type="text" class="form-control" id="customer_salary_${data.ssid}" value="${data.customerSalary}"></td>
@@ -54,10 +54,10 @@ function createCustomer() {
       <td><button type="button" class="btn btn-success" onclick='creditRequest(${data.ssid})'>Make Credit Request</td>
 
   </tr>`;
-    })
-    .catch((error) => {
-      console.log("error", error);
-    });
+      })
+      .catch((error) => {
+        console.log("error", error);
+      });
 }
 
 function updateCustomer(customerssid) {
@@ -66,17 +66,17 @@ function updateCustomer(customerssid) {
 
   let customer = {
     ssid:
-      document.getElementById("customer_ssid_" + customerssid).value ||
-      "EMPTY VALUE!!!",
+        document.getElementById("customer_ssid_" + customerssid).value ||
+        "EMPTY VALUE!!!",
     customerName:
-      document.getElementById("customer_name_" + customerssid).value ||
-      "EMPTY VALUE!!!",
+        document.getElementById("customer_name_" + customerssid).value ||
+        "EMPTY VALUE!!!",
     customerSalary:
-      document.getElementById("customer_salary_" + customerssid).value ||
-      "EMPTY VALUE!!!",
+        document.getElementById("customer_salary_" + customerssid).value ||
+        "EMPTY VALUE!!!",
     customerPhoneNumber:
-      document.getElementById("customer_phonenumber_" + customerssid).value ||
-      "EMPTY VALUE!!!",
+        document.getElementById("customer_phonenumber_" + customerssid).value ||
+        "EMPTY VALUE!!!",
   };
 
   fetch("http://localhost:8080/api/customers", {
@@ -86,13 +86,13 @@ function updateCustomer(customerssid) {
       "Content-Type": "application/json",
     },
   })
-    .then((response) => response.json())
-    .then((data) => {
-      console.log("customer Updated", data);
-    })
-    .catch((error) => {
-      console.log("error", error);
-    });
+      .then((response) => response.json())
+      .then((data) => {
+        console.log("customer Updated", data);
+      })
+      .catch((error) => {
+        console.log("error", error);
+      });
 }
 
 function deleteCustomer(ssid) {
@@ -102,13 +102,13 @@ function deleteCustomer(ssid) {
       "Content-Type": "application/json",
     },
   })
-    .then((response) => console.log(response))
-    .then((data) => {
-      console.log("customer Deleted", data);
-    })
-    .catch((error) => {
-      console.log("error", error);
-    });
+      .then((response) => console.log(response))
+      .then((data) => {
+        console.log("customer Deleted", data);
+      })
+      .catch((error) => {
+        console.log("error", error);
+      });
 }
 
 getCustomerList();
@@ -128,19 +128,19 @@ function creditRequest(ssid){
       "Content-Type": "application/json",
     },
   })
-    .then((response) => response.json())
-    .then((data) => {
-      console.log(data);
-      creditRequestTable.innerHTML = `<tr>
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data);
+        creditRequestTable.innerHTML = `<tr>
       <td><input type="text" class="form-control" id="customer_ssid_${data.id}" value="${data.id}" readonly></td>
       <td><input type="text" class="form-control" id="customer_ssid_${ssid}" value="${ssid}" readonly></td>
       <td><input type="text" class="form-control" id="customer_ssid_${date}" value="${date}" readonly></td>
       <td><input type="text" class="form-control" id="customer_name_${data.creditResponseType}" value="${data.creditResponseType}"></td>
       <td><input type="text" class="form-control" id="customer_salary_${data.creditLimit}" value="${data.creditLimit}"></td>
   </tr>`;
-    })
-    .catch((error) => {
-      console.log("error", error);
-    });
+      })
+      .catch((error) => {
+        console.log("error", error);
+      });
 
 }
