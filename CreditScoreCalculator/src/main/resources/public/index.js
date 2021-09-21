@@ -1,11 +1,10 @@
-const table = document.getElementById("userTable");
+const table = document.getElementById("customerTable");
 
 function getCustomerList() {
   fetch("http://localhost:8080/api/customers")
     .then((response) => response.json())
     .then((data) => {
       for (customer of data) {
-        console.log(customer);
         table.innerHTML += `
           <tr>
           <td><input type="text" class="form-control" id="customer_ssid_${customer.ssid}" value="${customer.ssid}" readonly></td>
@@ -14,6 +13,7 @@ function getCustomerList() {
           <td><input type="text" class="form-control" id="customer_phonenumber_${customer.ssid}" value="${customer.customerPhoneNumber}"></td>
           <td><button type="button" class="btn btn-primary" onclick='updateCustomer(${customer.ssid})'>Update Customer </td>
           <td><button type="button" class="btn btn-primary" onclick='deleteCustomer(${customer.ssid})'>Delete Customer</td>
+          <td><button type="button" class="btn btn-success" onclick='creditRequest(${customer.ssid})'>Make Credit Request</td>
       </tr>`;
       }
     });
@@ -31,15 +31,15 @@ function createCustomer() {
     customerSalary:
       document.getElementById("customer_salary").value || "EMPTY VALUE!!!",
     customerPhoneNumber:
-      document.getElementById("customer_phonenumber").value || "EMPTY VALUE!!!"
+      document.getElementById("customer_phonenumber").value || "EMPTY VALUE!!!",
   };
 
   fetch("http://localhost:8080/api/customers", {
     method: "post",
     body: JSON.stringify(customer),
     headers: {
-      "Content-Type": "application/json"
-    }
+      "Content-Type": "application/json",
+    },
   })
     .then((response) => response.json())
     .then((data) => {
@@ -51,6 +51,8 @@ function createCustomer() {
       <td><input type="text" class="form-control" id="customer_phonenumber_${data.ssid}" value="${data.customerPhoneNumber}"></td>
       <td><button type="button" class="btn btn-primary" onclick='updateCustomer(${data.ssid})'>Update Customer </td>
       <td><button type="button" class="btn btn-primary" onclick='deleteCustomer(${data.ssid})'>Delete Customer</td>
+      <td><button type="button" class="btn btn-success" onclick='creditRequest(${data.ssid})'>Make Credit Request</td>
+
   </tr>`;
     })
     .catch((error) => {
@@ -74,15 +76,15 @@ function updateCustomer(customerssid) {
       "EMPTY VALUE!!!",
     customerPhoneNumber:
       document.getElementById("customer_phonenumber_" + customerssid).value ||
-      "EMPTY VALUE!!!"
+      "EMPTY VALUE!!!",
   };
 
   fetch("http://localhost:8080/api/customers", {
     method: "PUT",
     body: JSON.stringify(customer),
     headers: {
-      "Content-Type": "application/json"
-    }
+      "Content-Type": "application/json",
+    },
   })
     .then((response) => response.json())
     .then((data) => {
@@ -93,21 +95,52 @@ function updateCustomer(customerssid) {
     });
 }
 
-
 function deleteCustomer(ssid) {
-    fetch("http://localhost:8080/api/customers/" + ssid, {
+  fetch("http://localhost:8080/api/customers/" + ssid, {
     method: "DELETE",
     headers: {
-      "Content-Type": "application/json"
-    }
+      "Content-Type": "application/json",
+    },
   })
-  .then(response => console.log(response))
-  .then(data => {
-    console.log("customer Deleted", data);
-  })
-  .catch((error) => {
-    console.log("error", error);
-  });
-  }
-  
+    .then((response) => console.log(response))
+    .then((data) => {
+      console.log("customer Deleted", data);
+    })
+    .catch((error) => {
+      console.log("error", error);
+    });
+}
+
 getCustomerList();
+
+const creditRequestTable = document.getElementById("creditResponseTable");
+
+function creditRequest(ssid){
+
+  var today = new Date();
+
+  var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate()+ " " + today.getHours() + ":" + today.getMinutes();
+
+
+  fetch("http://localhost:8080/api/credit-request/" + ssid, {
+    method: "post",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      console.log(data);
+      creditRequestTable.innerHTML = `<tr>
+      <td><input type="text" class="form-control" id="customer_ssid_${data.id}" value="${data.id}" readonly></td>
+      <td><input type="text" class="form-control" id="customer_ssid_${ssid}" value="${ssid}" readonly></td>
+      <td><input type="text" class="form-control" id="customer_ssid_${date}" value="${date}" readonly></td>
+      <td><input type="text" class="form-control" id="customer_name_${data.creditResponseType}" value="${data.creditResponseType}"></td>
+      <td><input type="text" class="form-control" id="customer_salary_${data.creditLimit}" value="${data.creditLimit}"></td>
+  </tr>`;
+    })
+    .catch((error) => {
+      console.log("error", error);
+    });
+
+}
