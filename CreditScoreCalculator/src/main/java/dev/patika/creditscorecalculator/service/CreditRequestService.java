@@ -47,7 +47,7 @@ public class CreditRequestService{
 
 
         if (creditScore < 500){
-            CreditRequestResponse creditResponse = new CreditRequestResponse("Reject", customer);
+            CreditRequestResponse creditResponse = new CreditRequestResponse("Reject",0.00, customer);
             creditRequestRepository.save(creditResponse);
             return creditResponse;
         }

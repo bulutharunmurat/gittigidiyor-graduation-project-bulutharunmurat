@@ -47,8 +47,11 @@ public class CustomerService{
     @Transactional
     public Customer save(CustomerDTO customerDTO) {
 
+        boolean isCustomerDtoValid = this.checkCustomerDTOValidity(customerDTO);
         boolean isExists = customerRepository.selectExistsSsid(customerDTO.getSsid());
-
+        if(isCustomerDtoValid){
+            // SHOULD BE IMPLEMENT
+        }
         if(isExists){
             logger.debug("Customer with SSID : " + customerDTO.getSsid() + " is already exists!");
 //            Log log = new Log(Instant.now(),"Customer with SSID : " + customerDTO.getSsid() + " is already exists!", "course error");
@@ -63,5 +66,10 @@ public class CustomerService{
     // When the customer deleted customer's all credit requests would be delete as well
     public void deleteBySsid(long ssid) {
         customerRepository.deleteById(ssid);
+    }
+
+    public boolean checkCustomerDTOValidity(CustomerDTO customerDTO){
+        // SHOULD BE IMPLEMENT
+        return true;
     }
 }
