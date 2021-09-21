@@ -10,4 +10,16 @@
 
 ![odevpart3](https://user-images.githubusercontent.com/45206582/133460177-2e2e561e-e1ac-4c42-96a7-5bce51eb8228.PNG)
 
+## USING LOF4J LOGGER
+Create the database table LOGS, in schema test. After table create in database all logs saved to logs table automatically.
 
+`
+CREATE TABLE LOGS
+(
+USER_ID VARCHAR(20) NOT NULL,
+DATED   DATETIME NOT NULL,
+LOGGER  VARCHAR(100) NOT NULL,
+LEVEL   VARCHAR(50) NOT NULL,
+MESSAGE VARCHAR(1000) NOT NULL
+);
+`
