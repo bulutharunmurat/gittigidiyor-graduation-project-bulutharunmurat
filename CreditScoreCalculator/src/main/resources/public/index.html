@@ -47,7 +47,7 @@
                 />
               </div>
             <div class="">
-              <button type="button" class="btn btn-primary btn-lg btn-block" onclick=createCustomer()
+              <button type="button" class="btn btn-info btn-lg btn-block" onclick=createCustomer()
                 >Create Customer</button
               >
               <br>
@@ -57,15 +57,15 @@
           </form>
           <h2 class="display-5 text-center">Current Customers</h2>
           <table class="table">
-            <thead class="thead-dark">
+            <thead>
               <tr>
-                <th scope="col">Customer SSID</th>
-                <th scope="col">Customer Name</th>
-                <th scope="col">Customer Salary	</th>
-                <th scope="col">Customer Phone Number</th>
-                <th scope="col">Update Customer</th>
-                <th scope="col">Delete Customer</th>
-                <th scope="col">Make Credit Request</th>
+                <th scope="col"  class="table-success">Customer SSID</th>
+                <th scope="col"  class="table-success">Customer Name</th>
+                <th scope="col"  class="table-success">Customer Salary	</th>
+                <th scope="col"  class="table-success">Customer Phone Number</th>
+                <th scope="col"  class="table-success">Update Customer</th>
+                <th scope="col"  class="table-success">Delete Customer</th>
+                <th scope="col"  class="table-success">Make Credit Request</th>
               </tr>
             </thead>
             <tbody id="customerTable">
@@ -73,19 +73,46 @@
               </tr> -->
             </tbody>
           </table>
+          <br>
+          <hr>
+          <br>
           <h2 class="display-5 text-center">Credit Request Response</h2>
           <table class="table">
-            <thead class="thead-dark">
+            <thead>
             <tr>
-              <th scope="col">Credit Request ID</th>
-              <th scope="col">Customer SSID</th>
-              <th scope="col">Credit Request Date</th>
-              <th scope="col">Credit Response</th>
-              <th scope="col">Credit Limit</th>
-
+              <th scope="col"  class="table-success">Credit Request ID</th>
+              <th scope="col" class="table-success">Customer SSID</th>
+              <th scope="col" class="table-success">Credit Request Date</th>
+              <th scope="col" class="table-success">Credit Response</th>
+              <th scope="col" class="table-success">Credit Limit</th>
             </tr>
             </thead>
             <tbody id="creditResponseTable">
+            <!-- <tr>
+            </tr> -->
+            </tbody>
+          </table>
+          <br>
+          <hr>
+          <br>
+          <h2 class="display-5 text-center">Search Credit Request By Customer SSID</h2>
+          <div class="input-group mb-3">
+          <input type="text" class="form-control" placeholder="Customer SSID" aria-label="Customer SSID" aria-describedby="button-addon2">
+          <div class="input-group-append">
+            <button class="btn btn-outline-secondary" onclick='getCreditRequestWithCustomerSSID()' type="button" id="button-addon2">Search</button>
+          </div>
+        </div>
+          <table class="table">
+          <table class="table">
+            <thead>
+            <tr>
+              <th scope="col" class="table-success">Credit Request ID</th>
+              <th scope="col" class="table-success">Customer SSID</th>
+              <th scope="col" class="table-success">Credit Response</th>
+              <th scope="col" class="table-success">Credit Limit</th>
+            </tr>
+            </thead>
+            <tbody id="creditResponseOfCustomerTable">
             <!-- <tr>
             </tr> -->
             </tbody>

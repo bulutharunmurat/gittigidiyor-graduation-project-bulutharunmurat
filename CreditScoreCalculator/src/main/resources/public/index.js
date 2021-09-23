@@ -11,8 +11,8 @@ function getCustomerList() {
           <td><input type="text" class="form-control" id="customer_name_${customer.ssid}" value="${customer.customerName}"></td>
           <td><input type="text" class="form-control" id="customer_salary_${customer.ssid}" value="${customer.customerSalary}"></td>
           <td><input type="text" class="form-control" id="customer_phonenumber_${customer.ssid}" value="${customer.customerPhoneNumber}"></td>
-          <td><button type="button" class="btn btn-primary" onclick='updateCustomer(${customer.ssid})'>Update Customer </td>
-          <td><button type="button" class="btn btn-primary" onclick='deleteCustomer(${customer.ssid})'>Delete Customer</td>
+          <td><button type="button" class="btn btn-info" onclick='updateCustomer(${customer.ssid})'>Update Customer </td>
+          <td><button type="button" class="btn btn-info" onclick='deleteCustomer(${customer.ssid})'>Delete Customer</td>
           <td><button type="button" class="btn btn-success" onclick='creditRequest(${customer.ssid})'>Make Credit Request</td>
       </tr>`;
         }
@@ -49,8 +49,8 @@ function createCustomer() {
       <td><input type="text" class="form-control" id="customer_name_${data.ssid}" value="${data.customerName}"></td>
       <td><input type="text" class="form-control" id="customer_salary_${data.ssid}" value="${data.customerSalary}"></td>
       <td><input type="text" class="form-control" id="customer_phonenumber_${data.ssid}" value="${data.customerPhoneNumber}"></td>
-      <td><button type="button" class="btn btn-primary" onclick='updateCustomer(${data.ssid})'>Update Customer </td>
-      <td><button type="button" class="btn btn-primary" onclick='deleteCustomer(${data.ssid})'>Delete Customer</td>
+      <td><button type="button" class="btn btn-info" onclick='updateCustomer(${data.ssid})'>Update Customer </td>
+      <td><button type="button" class="btn btn-info" onclick='deleteCustomer(${data.ssid})'>Delete Customer</td>
       <td><button type="button" class="btn btn-success" onclick='creditRequest(${data.ssid})'>Make Credit Request</td>
 
   </tr>`;
@@ -145,4 +145,25 @@ function creditRequest(ssid){
         console.log("error", error);
       });
 
+}
+const creditRequestsOfCustomerTable = document.getElementById("creditResponseOfCustomerTable");
+
+function getCreditRequestWithCustomerSSID(ssid) {
+
+
+    fetch("http://localhost:8080/api/credit-request/" + ssid)
+        .then((response) => response.json())
+        .then((data) => {
+
+            for (creditRequest of data) {
+
+                creditRequestsOfCustomerTable.innerHTML += `
+          <tr>
+          <td><input type="text" class="form-control" id="customer_ssid_${creditRequest.id}" value="${creditRequest.id}"></td>
+          <td><input type="text" class="form-control" id="customer_ssid_${creditRequest}" value="${ssid}"></td>
+          <td><input type="text" class="form-control" id="customer_name_${creditRequest.creditResponseType}" value="${creditRequest.creditResponseType}"></td>
+          <td><input type="text" class="form-control" id="customer_phonenumber_${creditRequest.creditLimit}" value="${creditRequest.creditLimit}"></td>
+      </tr>`;
+            }
+        });
 }
