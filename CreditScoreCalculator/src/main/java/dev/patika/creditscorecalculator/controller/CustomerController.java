@@ -8,6 +8,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.annotation.PostConstruct;
+import java.util.Arrays;
 import java.util.List;
 
 @RestController
@@ -17,6 +19,14 @@ import java.util.List;
 public class CustomerController {
 
     private final CustomerService customerService;
+
+//    @PostConstruct
+//    private void loadData(){
+//        customerlist = Arrays.asList(
+//                new Customer(19244564, "murat bulut", 1500F, "0513214"),
+//                new Customer(19244564, "murat bulut", 1500F, "0513214")
+//        );
+//    }
 
     @GetMapping("/customers")
     public ResponseEntity<List<Customer>> findAll(){

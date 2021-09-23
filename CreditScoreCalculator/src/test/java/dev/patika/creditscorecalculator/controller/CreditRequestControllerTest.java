@@ -28,7 +28,7 @@ class CreditRequestControllerTest {
     }
 
     @Test
-    void creditRequestWithCustomerId() {
+    void shouldMakeDreditRequestWithCustomerId() {
         //given
         CreditRequestResponse expected = new CreditRequestResponse();
         when(mockCreditRequestService.creditRequest(anyLong())).thenReturn(expected);

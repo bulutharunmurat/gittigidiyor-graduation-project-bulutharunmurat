@@ -36,7 +36,7 @@ class CustomerServiceTest {
     }
 
     @Test
-    void findBySsid() {
+    void shouldFindCustomerBySsid() {
         //given
         Customer expected = new Customer();
         expected.setSsid(1);
@@ -54,7 +54,7 @@ class CustomerServiceTest {
     }
 
     @Test
-    void update() {
+    void shouldUpdateCustomer() {
         //given
         Customer expected = new Customer();
         expected.setCustomerName("Murat");
@@ -75,7 +75,7 @@ class CustomerServiceTest {
     }
 
     @Test
-    void save() {
+    void shouldSaveCustomer() {
 
         //given
         Customer expected = new Customer();
@@ -96,7 +96,7 @@ class CustomerServiceTest {
     }
 
     @Test
-    void savingExistingCustomer() {
+    void shouldThrowExceptionWhenSavingExistingCustomer() {
 
         //given
         Customer expected = new Customer();

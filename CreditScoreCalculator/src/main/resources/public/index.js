@@ -93,6 +93,7 @@ function updateCustomer(customerssid) {
       .catch((error) => {
         console.log("error", error);
       });
+    window.location.reload()
 }
 
 function deleteCustomer(ssid) {
@@ -109,6 +110,7 @@ function deleteCustomer(ssid) {
       .catch((error) => {
         console.log("error", error);
       });
+    window.location.reload()
 }
 
 getCustomerList();

@@ -17,9 +17,11 @@ import java.util.List;
 @Entity
 public class Customer extends AbstractBaseEntity{
 
+
+//    @GeneratedValue(strategy = GenerationType.IDENTITY)
+//    private int id;
     @Id
     private long ssid; // Customer SSID considered as an unique ID.
-
     private String customerName;
     private Float customerSalary;
     private String customerPhoneNumber;
@@ -28,4 +30,10 @@ public class Customer extends AbstractBaseEntity{
     @OneToMany(mappedBy = "customer", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<CreditRequestResponse> creditRequestResponse = new ArrayList<>();
 
+    public Customer(long ssid, String customerName, Float customerSalary, String customerPhoneNumber) {
+        this.ssid = ssid;
+        this.customerName = customerName;
+        this.customerSalary = customerSalary;
+        this.customerPhoneNumber = customerPhoneNumber;
+    }
 }

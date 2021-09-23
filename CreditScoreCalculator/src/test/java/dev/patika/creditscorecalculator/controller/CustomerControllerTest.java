@@ -25,7 +25,7 @@ class CustomerControllerTest {
     }
 
     @Test
-    void findCustomerBySsid() {
+    void shouldFindCustomerBySsid() {
         //given
         Customer expected = new Customer();
         expected.setSsid(1);
@@ -43,7 +43,7 @@ class CustomerControllerTest {
     }
 
     @Test
-    void deleteCustomerBySsid() {
+    void shouldDeleteCustomerBySsid() {
         //given
         String expected = "Customer with " + 1 + " SSID deleted";;
 
@@ -55,7 +55,7 @@ class CustomerControllerTest {
     }
 
     @Test
-    void saveCustomer() {
+    void shouldSaveCustomer() {
         //given
         Customer expected = new Customer();
         expected.setCustomerName("Murat");
@@ -74,7 +74,7 @@ class CustomerControllerTest {
     }
 
     @Test
-    void updateCustomer() {
+    void shouldUpdateCustomer() {
         //given
         Customer expected = new Customer();
         when(mockCustomerService.update(any())).thenReturn(expected);

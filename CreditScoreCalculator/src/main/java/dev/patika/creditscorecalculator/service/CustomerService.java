@@ -63,11 +63,17 @@ public class CustomerService{
     }
 
 
+
     // When the customer deleted customer's all credit requests would be delete as well
     public void deleteBySsid(long ssid) {
         customerRepository.deleteById(ssid);
     }
 
+    /**
+     * Checks the customerDTO valid or not
+     * @param customerDTO
+     * @return boolean
+     */
     public boolean checkCustomerDTOValidity(CustomerDTO customerDTO){
         // SHOULD BE IMPLEMENT
         return true;

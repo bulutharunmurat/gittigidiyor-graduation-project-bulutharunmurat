@@ -30,7 +30,7 @@ public class CreditRequestService{
         // Getting last number of SSID
         long lastNumberOfCustomerSSID = customerSSID % 10;
 
-        if(lastNumberOfCustomerSSID % 2 == 1  ){
+        if(lastNumberOfCustomerSSID % 2 == 1){
             logger.info("Customers SSID cannot end with with odd number!!!");
             throw new IllegalSSIDNumberException("Customers SSID cannot end with with odd number!!!");
         }
@@ -49,17 +49,26 @@ public class CreditRequestService{
         if (creditScore < 500){
             CreditRequestResponse creditResponse = new CreditRequestResponse("Reject",0.00, customer);
             creditRequestRepository.save(creditResponse);
+            System.out.println("Sending message to " + customer.getCustomerPhoneNumber() +
+                    "...\t ->\t" + "Credit request of customer with id " + customerSSID +
+                    " is rejected!!!");
             return creditResponse;
         }
         else if (500 < creditScore && creditScore < 1000 ){
             if(customer.getCustomerSalary() < 5000){
                 CreditRequestResponse creditResponse = new CreditRequestResponse("Approve", 10000.00, customer);
                 creditRequestRepository.save(creditResponse);
+                System.out.println("Sending message to " + customer.getCustomerPhoneNumber() +
+                        "...\t ->\t" + "Credit request of customer with id " + customerSSID +
+                        " is approved and credit limit is: " + creditResponse.getCreditLimit());
                 return creditResponse;
             }
             else {
                 CreditRequestResponse creditResponse = new CreditRequestResponse("Approve", 20000.00, customer);
                 creditRequestRepository.save(creditResponse);
+                System.out.println("Sending message to " + customer.getCustomerPhoneNumber() +
+                        "...\t ->\t" + "Credit request of customer with id " + customerSSID +
+                        " is approved and credit limit is: " + creditResponse.getCreditLimit());
                 return creditResponse;
             }
         }
@@ -67,6 +76,9 @@ public class CreditRequestService{
             double customerLimit = customer.getCustomerSalary() * customCreditRatio;
             CreditRequestResponse creditResponse = new CreditRequestResponse("Approve", customerLimit, customer);
             creditRequestRepository.save(creditResponse);
+            System.out.println("Sending message to " + customer.getCustomerPhoneNumber() +
+                    "...\t ->\t" + "Credit request of customer with id " + customerSSID +
+                    " is approved and credit limit is: " + creditResponse.getCreditLimit());
             return creditResponse;
         }
 
