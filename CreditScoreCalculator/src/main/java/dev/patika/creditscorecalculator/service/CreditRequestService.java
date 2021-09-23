@@ -48,40 +48,37 @@ public class CreditRequestService{
 
         if (creditScore < 500){
             CreditRequestResponse creditResponse = new CreditRequestResponse("Reject",0.00, customer);
-            creditRequestRepository.save(creditResponse);
             System.out.println("Sending message to " + customer.getCustomerPhoneNumber() +
                     "...\t ->\t" + "Credit request of customer with id " + customerSSID +
                     " is rejected!!!");
-            return creditResponse;
+            return creditRequestRepository.save(creditResponse);
         }
         else if (500 < creditScore && creditScore < 1000 ){
             if(customer.getCustomerSalary() < 5000){
                 CreditRequestResponse creditResponse = new CreditRequestResponse("Approve", 10000.00, customer);
-                creditRequestRepository.save(creditResponse);
                 System.out.println("Sending message to " + customer.getCustomerPhoneNumber() +
                         "...\t ->\t" + "Credit request of customer with id " + customerSSID +
                         " is approved and credit limit is: " + creditResponse.getCreditLimit());
-                return creditResponse;
+                return creditRequestRepository.save(creditResponse);
+
             }
             else {
                 CreditRequestResponse creditResponse = new CreditRequestResponse("Approve", 20000.00, customer);
-                creditRequestRepository.save(creditResponse);
                 System.out.println("Sending message to " + customer.getCustomerPhoneNumber() +
                         "...\t ->\t" + "Credit request of customer with id " + customerSSID +
                         " is approved and credit limit is: " + creditResponse.getCreditLimit());
-                return creditResponse;
+                return creditRequestRepository.save(creditResponse);
             }
         }
         else {
             double customerLimit = customer.getCustomerSalary() * customCreditRatio;
             CreditRequestResponse creditResponse = new CreditRequestResponse("Approve", customerLimit, customer);
-            creditRequestRepository.save(creditResponse);
             System.out.println("Sending message to " + customer.getCustomerPhoneNumber() +
                     "...\t ->\t" + "Credit request of customer with id " + customerSSID +
                     " is approved and credit limit is: " + creditResponse.getCreditLimit());
-            return creditResponse;
-        }
+            return creditRequestRepository.save(creditResponse);
 
+        }
     }
 
     private double creditScoreCalculator(long lastNumberOfSSID){
