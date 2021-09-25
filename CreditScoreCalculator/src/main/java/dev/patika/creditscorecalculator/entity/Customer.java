@@ -21,6 +21,7 @@ public class Customer extends AbstractBaseEntity{
 //    @GeneratedValue(strategy = GenerationType.IDENTITY)
 //    private int id;
     @Id
+    @SequenceGenerator(sequenceName = "customer_sequence", name = "customer_sequence")
     private long ssid; // Customer SSID considered as an unique ID.
     private String customerName;
     private Float customerSalary;

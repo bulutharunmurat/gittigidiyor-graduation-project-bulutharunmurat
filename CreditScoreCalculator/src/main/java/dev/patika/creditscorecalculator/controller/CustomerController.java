@@ -9,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.PostConstruct;
+import javax.validation.Valid;
 import java.util.Arrays;
 import java.util.List;
 
@@ -42,12 +43,12 @@ public class CustomerController {
         return "Customer with " + ssid + " SSID deleted";
     }
     @PostMapping("/customers")
-    public Customer saveCustomer(@RequestBody CustomerDTO customerDTO){
+    public Customer saveCustomer(@Valid @RequestBody CustomerDTO customerDTO){
         return customerService.save(customerDTO);
     }
 
     @PutMapping("/customers")
-    public Customer updateCustomer(@RequestBody CustomerDTO customerDTO){
+    public Customer updateCustomer(@Valid @RequestBody CustomerDTO customerDTO){
         return customerService.update(customerDTO);
     }
 }

@@ -27,6 +27,7 @@ public class CreditRequestResponse extends AbstractBaseEntity{
     }
 
     @Id//for persistence context - primary key
+    @SequenceGenerator(sequenceName = "credit_sequence", name = "credit_sequence", allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
