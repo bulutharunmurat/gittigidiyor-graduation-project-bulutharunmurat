@@ -1,4 +1,4 @@
 FROM openjdk:11
 EXPOSE 8080
-ADD target/*.jar creditscore.jar
-ENTRYPOINT ["java","-jar","/creditscore.jar"]
+ADD CreditScoreCalculator/target/*.jar creditscorecalculator.jar
+ENTRYPOINT ["java","-jar","/creditscorecalculator.jar"]

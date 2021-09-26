@@ -1,5 +1,6 @@
 package dev.patika.creditscorecalculator.service;
 
+import dev.patika.creditscorecalculator.client.CreditScoreClient;
 import dev.patika.creditscorecalculator.entity.CreditRequestResponse;
 import dev.patika.creditscorecalculator.entity.Customer;
 import dev.patika.creditscorecalculator.exceptions.CustomerNotFoundException;
@@ -18,6 +19,7 @@ public class CreditRequestService{
 
     private final CustomerService customerService;
     private final CreditRequestRepository creditRequestRepository;
+    private final CreditScoreClient creditScoreClient;
     private static Logger logger = Logger.getLogger(CustomerService.class);
 
     public List<CreditRequestResponse> findCustomerCreditResponsesWithSsid(long customerSSID) {
@@ -42,8 +44,8 @@ public class CreditRequestService{
         Customer customer = customerService.findBySsid(customerSSID);
 
 
-        // Credit Score calculated with CreditScoreCalculator Logic, in future credit scores can pull from database!!!
-        double creditScore = creditScoreCalculator(lastNumberOfCustomerSSID);
+        // Credit Score calculated with another Service (microservice structure implemented)
+        double creditScore = creditScoreClient.findCustomerCreditScoreWithSsid(customerSSID);
 
 
         if (creditScore < 500){
@@ -81,27 +83,27 @@ public class CreditRequestService{
         }
     }
 
-    private double creditScoreCalculator(long lastNumberOfSSID){
-        double creditScore;
-        switch((int) lastNumberOfSSID) {
-            case 0:
-                creditScore =  2000;
-                break;
-            case 2:
-                creditScore = 550;
-                break;
-            case 4:
-                creditScore = 1000;
-                break;
-            case 6:
-                creditScore = 400;
-                break;
-            case 8:
-                creditScore = 900;
-                break;
-            default:
-                throw new IllegalStateException("Unexpected value: " + lastNumberOfSSID);
-        }
-        return creditScore;
-    }
+//    private double creditScoreCalculator(long lastNumberOfSSID){
+//        double creditScore;
+//        switch((int) lastNumberOfSSID) {
+//            case 0:
+//                creditScore =  2000;
+//                break;
+//            case 2:
+//                creditScore = 550;
+//                break;
+//            case 4:
+//                creditScore = 1000;
+//                break;
+//            case 6:
+//                creditScore = 400;
+//                break;
+//            case 8:
+//                creditScore = 900;
+//                break;
+//            default:
+//                throw new IllegalStateException("Unexpected value: " + lastNumberOfSSID);
+//        }
+//        return creditScore;
+//    }
 }
