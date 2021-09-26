@@ -6,6 +6,7 @@ import dev.patika.creditscorecalculator.exceptions.CustomerAlreadyExists;
 import dev.patika.creditscorecalculator.exceptions.CustomerNotFoundException;
 import dev.patika.creditscorecalculator.mappers.CustomerMapper;
 import dev.patika.creditscorecalculator.repository.CustomerRepository;
+import dev.patika.creditscorecalculator.util.CustomerValidatorUtil;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -36,7 +37,10 @@ public class CustomerService{
                 .orElseThrow(() -> new CustomerNotFoundException(String.format("Customer with SSID: %d could not found!", customerSSID)));
         return customer;
     }
-
+    
+    private void validateRequest(CustomerDTO customerDTO) {
+        CustomerValidatorUtil.validateSalary(customerDTO.getCustomerSalary());
+    }
     // Customer SSID considered as an unique and cannot be change in future
     @Transactional
     public Customer update(CustomerDTO customerDTO) {

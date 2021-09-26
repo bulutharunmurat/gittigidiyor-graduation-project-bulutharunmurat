@@ -30,6 +30,13 @@ public class GlobalExceptionHandler {
         return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST);
     }
 
+    @ExceptionHandler({BadRequestException.class})
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    public ResponseEntity<CreditScoreAppErrorMessage> handleException(BadRequestException exc){
+        CreditScoreAppErrorMessage response = prepareErrorResponse(HttpStatus.BAD_REQUEST, exc.getMessage());
+        return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST);
+    }
+
     private CreditScoreAppErrorMessage prepareErrorResponse(HttpStatus httpStatus, String message) {
         CreditScoreAppErrorMessage response = new CreditScoreAppErrorMessage();
         response.setStatus(httpStatus.value());
