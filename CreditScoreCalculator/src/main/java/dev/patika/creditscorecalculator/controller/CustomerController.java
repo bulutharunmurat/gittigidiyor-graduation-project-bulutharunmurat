@@ -21,14 +21,6 @@ public class CustomerController {
 
     private final CustomerService customerService;
 
-//    @PostConstruct
-//    private void loadData(){
-//        customerlist = Arrays.asList(
-//                new Customer(19244564, "murat bulut", 1500F, "0513214"),
-//                new Customer(19244564, "murat bulut", 1500F, "0513214")
-//        );
-//    }
-
     @GetMapping("/customers")
     public ResponseEntity<List<Customer>> findAll(){
         return new ResponseEntity<>(customerService.findAll(), HttpStatus.OK);

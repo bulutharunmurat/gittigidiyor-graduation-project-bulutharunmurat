@@ -45,7 +45,8 @@ public class CreditRequestService{
 
 
         // Credit Score calculated with another Service (microservice structure implemented)
-        double creditScore = creditScoreClient.findCustomerCreditScoreWithSsid(customerSSID);
+//        double creditScore = creditScoreClient.findCustomerCreditScoreWithSsid(customerSSID);
+        double creditScore = this.creditScoreCalculator(customerSSID);
 
 
         if (creditScore < 500){
@@ -83,27 +84,28 @@ public class CreditRequestService{
         }
     }
 
-//    private double creditScoreCalculator(long lastNumberOfSSID){
-//        double creditScore;
-//        switch((int) lastNumberOfSSID) {
-//            case 0:
-//                creditScore =  2000;
-//                break;
-//            case 2:
-//                creditScore = 550;
-//                break;
-//            case 4:
-//                creditScore = 1000;
-//                break;
-//            case 6:
-//                creditScore = 400;
-//                break;
-//            case 8:
-//                creditScore = 900;
-//                break;
-//            default:
-//                throw new IllegalStateException("Unexpected value: " + lastNumberOfSSID);
-//        }
-//        return creditScore;
-//    }
+    private double creditScoreCalculator(long customerSSID){
+        long lastNumberOfCustomerSSID = customerSSID % 10;
+        double creditScore;
+        switch((int) lastNumberOfCustomerSSID) {
+            case 0:
+                creditScore =  2000;
+                break;
+            case 2:
+                creditScore = 550;
+                break;
+            case 4:
+                creditScore = 1000;
+                break;
+            case 6:
+                creditScore = 400;
+                break;
+            case 8:
+                creditScore = 900;
+                break;
+            default:
+                throw new IllegalStateException("Unexpected value: " + lastNumberOfCustomerSSID);
+        }
+        return creditScore;
+    }
 }

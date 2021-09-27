@@ -30,6 +30,22 @@ MESSAGE VARCHAR(1000) NOT NULL
 
 ## ENDPOINTS
 
-## FOR COURSE
+## FOR CUSTOMER
+
+* [Show Customers](documents/api/customer/show-customers.md) : `GET /api/customers`
+* [Show Customer](documents/api/customer/show-customer.md) : `GET /api/customers/{ssid}`
+* [Create Customer](documents/api/customer/create-customer.md) : `POST /api/customers`
+* [Update Customer](documents/api/customer/update-customer.md) : `PUT /api/customers`
+* [Delete Customer](documents/api/customer/delete-customer.md) : `DELETE /api/customers/{ssid}`
+
+## FOR CREDIT REQUEST
+
+* [Get Credit Responses of Customer with SSID](documents/api/credits/find-credit-responses-of-customer.md) : `GET /api/credit-request/{ssid}`
+* [Make Credit Request for Customer with SSID](documents/api/credits/make-credit-request-for-customer.md) : `POST /api/credit-request/{ssid}`
 
 
+## Author
+
+**Harun Murat Bulut**
+
+* [github/bulutharunmurat](https://github.com/bulutharunmurat)

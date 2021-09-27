@@ -16,6 +16,10 @@ services:
     build:
       context: ""
       dockerfile: "EurekaServer/Dockerfile"
+    links:
+      - eureka-server
+    environment:
+        EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: http://eureka-server:8761/eureka
 
   springboot-score:
     image: creditscoreofcustomer
