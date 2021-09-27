@@ -119,9 +119,9 @@ const creditRequestTable = document.getElementById("creditResponseTable");
 
 function creditRequest(ssid){
 
-  var today = new Date();
+  let today = new Date();
 
-  var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate()+ " " + today.getHours() + ":" + today.getMinutes();
+  let date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate()+ " " + today.getHours() + ":" + today.getMinutes();
 
 
   fetch("http://localhost:8080/api/credit-request/" + ssid, {
@@ -148,8 +148,9 @@ function creditRequest(ssid){
 }
 const creditRequestsOfCustomerTable = document.getElementById("creditResponseOfCustomerTable");
 
-function getCreditRequestWithCustomerSSID(ssid) {
+function getCreditRequestWithCustomerSSID() {
 
+    let ssid = document.getElementById('ssid').value;
 
     fetch("http://localhost:8080/api/credit-request/" + ssid)
         .then((response) => response.json())
