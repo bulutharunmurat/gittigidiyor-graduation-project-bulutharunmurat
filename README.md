@@ -6,16 +6,16 @@
 
 [comment]: <> (![odevpart3]&#40;https://user-images.githubusercontent.com/45206582/133460177-2e2e561e-e1ac-4c42-96a7-5bce51eb8228.PNG&#41;)
 
-##SETUP
-* To build this project:
+## SETUP
 
-Project can be build in a two way,
+Project can be build in a two way:
 
    1.Monolithic Architecture
 
    2.Microservice Architecture
 
 ### 1. Monolithic Architecture
+
    1. Clone the project
 
       `git clone https://github.com/113-GittiGidiyor-Java-Spring-Bootcamp/gittigidiyor-graduation-project-bulutharunmurat.git`
@@ -44,8 +44,7 @@ Project would start at port 8080. `http://localhost:8080`
 
       `docker-compose -f docker-compose.yml up`
 
-Project would start at `http://localhost:8080`, `http://localhost:8081` and `http://localhost:8761`,
-you can find the frontend page at `http://localhost:8080`.
+Project would start at `http://localhost:8080`, `http://localhost:8081` and `http://localhost:8761`. You can find the frontend page at `http://localhost:8080`.
 
 ## FRONTEND
 
