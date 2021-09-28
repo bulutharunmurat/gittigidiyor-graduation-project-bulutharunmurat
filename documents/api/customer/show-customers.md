@@ -14,7 +14,7 @@ Returns a list of Customers.
 
 **Sample Response Body** :
 
-```json
+```
 {
     [
       {

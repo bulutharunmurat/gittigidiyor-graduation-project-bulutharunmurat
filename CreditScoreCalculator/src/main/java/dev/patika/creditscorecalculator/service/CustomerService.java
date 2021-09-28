@@ -24,6 +24,10 @@ public class CustomerService{
     private final CustomerMapper customerMapper;
     private static Logger logger = Logger.getLogger(CustomerService.class);
 
+    /**
+     *
+     * @return Customer List
+     */
     @Transactional(readOnly = true)
     public List<Customer> findAll() {
         List<Customer> customerList = new ArrayList<>();
@@ -32,15 +36,30 @@ public class CustomerService{
         return customerList;
     }
 
+    /**
+     *
+     * @param customerSSID
+     * @return Customer
+     */
     public Customer findBySsid(long customerSSID) {
         Customer customer = customerRepository.findBySsid(customerSSID)
                 .orElseThrow(() -> new CustomerNotFoundException(String.format("Customer with SSID: %d could not found!", customerSSID)));
         return customer;
     }
-    
+
+    /**
+     *
+     * @param customerDTO
+     */
     private void validateRequest(CustomerDTO customerDTO) {
         CustomerValidatorUtil.validateSalary(customerDTO.getCustomerSalary());
     }
+
+    /**
+     *
+     * @param customerDTO
+     * @return Customer
+     */
     // Customer SSID considered as an unique and cannot be change in future
     @Transactional
     public Customer update(CustomerDTO customerDTO) {
@@ -48,18 +67,19 @@ public class CustomerService{
         return customerRepository.save(customer);
     }
 
+    /**
+     *
+     * @param customerDTO
+     * @return Customer
+     */
     @Transactional
     public Customer save(CustomerDTO customerDTO) {
 
-        boolean isCustomerDtoValid = this.checkCustomerDTOValidity(customerDTO);
+        this.validateRequest(customerDTO);
         boolean isExists = customerRepository.selectExistsSsid(customerDTO.getSsid());
-        if(isCustomerDtoValid){
-            // SHOULD BE IMPLEMENT
-        }
+
         if(isExists){
             logger.debug("Customer with SSID : " + customerDTO.getSsid() + " is already exists!");
-//            Log log = new Log(Instant.now(),"Customer with SSID : " + customerDTO.getSsid() + " is already exists!", "course error");
-//            logService.save(log);
             throw new CustomerAlreadyExists("Customer with SSID : " + customerDTO.getSsid() + " is already exists!");
         }
         Customer customer = customerMapper.mapFromCustomerDTOtoCustomer(customerDTO);
@@ -67,19 +87,12 @@ public class CustomerService{
     }
 
 
-
+    /**
+     *
+     * @param ssid
+     */
     // When the customer deleted customer's all credit requests would be delete as well
     public void deleteBySsid(long ssid) {
         customerRepository.deleteById(ssid);
-    }
-
-    /**
-     * Checks the customerDTO valid or not
-     * @param customerDTO
-     * @return boolean
-     */
-    public boolean checkCustomerDTOValidity(CustomerDTO customerDTO){
-        // SHOULD BE IMPLEMENT
-        return true;
     }
 }

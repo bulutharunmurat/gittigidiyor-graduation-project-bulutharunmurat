@@ -6,12 +6,56 @@
 
 [comment]: <> (![odevpart3]&#40;https://user-images.githubusercontent.com/45206582/133460177-2e2e561e-e1ac-4c42-96a7-5bce51eb8228.PNG&#41;)
 
-## Frontend Of Application:
+##SETUP
+* To build this project:
+
+Project can be build in a two way,
+
+   1.Monolithic Architecture
+
+   2.Microservice Architecture
+
+### 1. Monolithic Architecture
+   1. Clone the project
+
+      `git clone https://github.com/113-GittiGidiyor-Java-Spring-Bootcamp/gittigidiyor-graduation-project-bulutharunmurat.git`
+
+   2. Navigate to CreditScoreCalculator folder and execute this command:
+   
+       `mvnw spring-boot:run`
+
+Project would start at port 8080. `http://localhost:8080`
+
+### 2. Microservice Architecture
+   
+   1. Clone the project
+
+      `git clone https://github.com/113-GittiGidiyor-Java-Spring-Bootcamp/gittigidiyor-graduation-project-bulutharunmurat.git`
+
+   2. Comment out creditScoreCalculator method at CreditRequestService at line 52.
+      
+      `double creditScore = this.creditScoreCalculator(customerSSID);`
+
+   3. And implement commented line 48.
+      
+      ` double creditScore = creditScoreClient.findCustomerCreditScoreWithSsid(customerSSID);`
+
+   4. Finally, go to project directory and run docker-compose.yml file.
+
+      `docker-compose -f docker-compose.yml up`
+
+Project would start at `http://localhost:8080`, `http://localhost:8081` and `http://localhost:8761`,
+you can find the frontend page at `http://localhost:8080`.
+
+## FRONTEND
 
 ![frontend](frontend-page.png)
 
+* HTML and JavaScript codes can be found at [public-directory](CreditScoreCalculator/src/main/resources/public).
+
 
 ## USING LOF4J LOGGER
+* If you want to save logs to MySQL database;
 * Create the database table LOGS, in schema test. After table create in database all logs saved to logs table automatically.
 
 `
@@ -24,10 +68,6 @@ LEVEL   VARCHAR(50) NOT NULL,
 MESSAGE VARCHAR(1000) NOT NULL
 );
 `
-
-## FOR DOCKER
-
-* `docker-compose -f docker-compose.yml up`
 
 ## ENDPOINTS
 

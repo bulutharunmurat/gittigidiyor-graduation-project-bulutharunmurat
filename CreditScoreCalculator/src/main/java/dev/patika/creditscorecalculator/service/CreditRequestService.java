@@ -26,6 +26,11 @@ public class CreditRequestService{
         return creditRequestRepository.findCustomerCreditResponsesWithSsid(customerSSID);
     }
 
+    /**
+     *
+     * @param customerSSID
+     * @return CreditRequestResponse entity
+     */
     @Transactional
     public CreditRequestResponse creditRequest(long customerSSID) {
 
@@ -44,8 +49,11 @@ public class CreditRequestService{
         Customer customer = customerService.findBySsid(customerSSID);
 
 
-        // Credit Score calculated with another Service (microservice structure implemented)
-//        double creditScore = creditScoreClient.findCustomerCreditScoreWithSsid(customerSSID);
+        // FOR MICROSERVICE ARCHITECTURE -> creditScore designed as a another service
+        // double creditScore = creditScoreClient.findCustomerCreditScoreWithSsid(customerSSID);
+
+
+       // FOR MONOLITHIC ARCHITECTURE
         double creditScore = this.creditScoreCalculator(customerSSID);
 
 
@@ -84,6 +92,11 @@ public class CreditRequestService{
         }
     }
 
+    /**
+     *
+     * @param customerSSID
+     * @return creditScore
+     */
     private double creditScoreCalculator(long customerSSID){
         long lastNumberOfCustomerSSID = customerSSID % 10;
         double creditScore;
